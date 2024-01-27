@@ -25,6 +25,7 @@ func _physics_process(delta):
 	progressBar.value = fuel
 	if fuel < 0:
 		## TODO: ADD LOSS CONDITION
+		
 		pass
 		
 	
