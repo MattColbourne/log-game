@@ -15,22 +15,21 @@ var isChopping = false;
 func _process(delta):
 	if isChopping: pass
 	else:
-		z_index = int(position.y/10)
-		Global.playerPos = global_position
-		if Input.is_action_just_pressed("swing_axe") and treesInAreaArray.size()>0:
-			treesInAreaArray[-1].takeDamage()
-		if Input.is_action_just_pressed("pickup") and currentlyHeldLog == null and logsInArea.size()>0:
-			if is_instance_valid(logsInArea[-1]):
-				print(logsInArea[-1])
-				currentlyHeldLog = logsInArea[-1]
-				logsInArea[-1].followPlayer = true
-				speed = 100
-		elif Input.is_action_just_pressed("pickup") and currentlyHeldLog != null:
-			currentlyHeldLog.drop(nearCampfire)
-			logsInArea.insert(0,currentlyHeldLog)
-			logsInArea.remove_at(len(logsInArea)-1)
-			currentlyHeldLog = null
-			speed = 200
+    z_index = int(position.y/10)
+    Global.playerPos = global_position
+    if Input.is_action_just_pressed("swing_axe") and treesInAreaArray.size()>0:
+      treesInAreaArray[-1].takeDamage()
+    if Input.is_action_just_pressed("pickup") and currentlyHeldLog == null and logsInArea.size()>0:
+      if is_instance_valid(logsInArea[-1]):
+        currentlyHeldLog = logsInArea[-1]
+        logsInArea[-1].followPlayer = true
+        speed = 100
+    elif Input.is_action_just_pressed("pickup") and currentlyHeldLog != null:
+      currentlyHeldLog.drop(nearCampfire)
+      logsInArea.insert(0,currentlyHeldLog)
+      logsInArea.remove_at(len(logsInArea)-1)
+      currentlyHeldLog = null
+      speed = 200
 		
 		if Input.is_action_pressed("left"):
 			_animation_player.play("walk_left")
@@ -97,6 +96,7 @@ func _on_area_2d_area_entered(area):
 	if area.is_in_group("tree"):
 		treesInAreaArray.append(area.get_parent())
 		area.get_parent().doPopup()
+		area.get_parent().popUpHealth()
 	elif area.is_in_group("log"):
 		logsInArea.append(area.get_parent())
 	elif area.is_in_group("campfire"):
@@ -109,6 +109,7 @@ func _on_area_2d_area_exited(area):
 			if treesInAreaArray[i] == area.get_parent():
 				treesInAreaArray.remove_at(i)
 				area.get_parent().removePopup()
+				area.get_parent().popDownHeath()
 				break
 	elif area.is_in_group("campfire"):
 		nearCampfire = false
