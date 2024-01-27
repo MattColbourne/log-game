@@ -115,4 +115,8 @@ libraries = {
 
 [node name="treePopup" parent="." instance=ExtResource("3_c1kpa")]
 
+[node name="chop" type="AudioStreamPlayer2D" parent="."]
+
+[node name="fall" type="AudioStreamPlayer2D" parent="."]
+
 [editable path="treePopup"]

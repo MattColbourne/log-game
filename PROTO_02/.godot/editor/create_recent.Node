@@ -1,3 +1,5 @@
+AudioStreamPlayer2D
+GPUParticles2D
 Node2D
 AnimationPlayer
 Control
@@ -6,7 +8,5 @@ Sprite2D
 CollisionShape2D
 Area2D
 ProgressBar
-GPUParticles2D
 CanvasModulate
 CanvasLayer
-AudioStreamPlayer2D

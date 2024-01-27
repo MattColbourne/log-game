@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dq1gfha6g8pns"]
+[gd_scene load_steps=16 format=3 uid="uid://dq1gfha6g8pns"]
 
 [ext_resource type="Texture2D" uid="uid://bslcw2fmle2xh" path="res://assets/TilesA2.png" id="1_3xjym"]
 [ext_resource type="PackedScene" uid="uid://cbboekyrsaiyk" path="res://tree.tscn" id="2_iybm4"]
@@ -228,6 +228,10 @@ border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.8, 0.8, 0.8, 0)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gxqff"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
 [node name="root" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -310,3 +314,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_3638l")
 theme_override_styles/fill = SubResource("StyleBoxFlat_82mm2")
 value = 29.26
 show_percentage = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_gxqff")
