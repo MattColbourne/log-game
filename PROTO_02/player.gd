@@ -8,57 +8,81 @@ var currentlyHeldLog = null
 var logsInArea = []
 var nearCampfire = false
 var pressed = ""
-var chopTimer = 0;
+var isChopping = false;
 
 @onready var _animation_player = $AnimationPlayer
 
 func _process(delta):
-	z_index = int(position.y/10)
-	Global.playerPos = global_position
-	if Input.is_action_just_pressed("swing_axe") and treesInAreaArray.size()>0:
-		treesInAreaArray[-1].takeDamage()
-	if Input.is_action_just_pressed("pickup") and currentlyHeldLog == null and logsInArea.size()>0:
-		if is_instance_valid(logsInArea[-1]):
-			print(logsInArea[-1])
-			currentlyHeldLog = logsInArea[-1]
-			logsInArea[-1].followPlayer = true
-			speed = 100
-	elif Input.is_action_just_pressed("pickup") and currentlyHeldLog != null:
-		currentlyHeldLog.drop(nearCampfire)
-		logsInArea.insert(0,currentlyHeldLog)
-		logsInArea.remove_at(len(logsInArea)-1)
-		currentlyHeldLog = null
-		speed = 200
-		
-	if Input.is_action_pressed("left"):
-		_animation_player.play("walk_left")
-	
-	
-	elif Input.is_action_pressed("right"):
-		_animation_player.play("walk_right")
-	
-	
-	elif Input.is_action_pressed("up"):
-		_animation_player.play("walk_up")
-	
-
-	elif Input.is_action_pressed("down"):
-		_animation_player.play("walk_down")
+	if isChopping: pass
 	else:
-		_animation_player.stop()
+		z_index = int(position.y/10)
+		Global.playerPos = global_position
+		if Input.is_action_just_pressed("swing_axe") and treesInAreaArray.size()>0:
+			treesInAreaArray[-1].takeDamage()
+		if Input.is_action_just_pressed("pickup") and currentlyHeldLog == null and logsInArea.size()>0:
+			if is_instance_valid(logsInArea[-1]):
+				print(logsInArea[-1])
+				currentlyHeldLog = logsInArea[-1]
+				logsInArea[-1].followPlayer = true
+				speed = 100
+		elif Input.is_action_just_pressed("pickup") and currentlyHeldLog != null:
+			currentlyHeldLog.drop(nearCampfire)
+			logsInArea.insert(0,currentlyHeldLog)
+			logsInArea.remove_at(len(logsInArea)-1)
+			currentlyHeldLog = null
+			speed = 200
+		
+		if Input.is_action_pressed("left"):
+			_animation_player.play("walk_left")
 	
-	if Input.is_action_just_pressed("swing_axe"):
-		if($Sprite2D.frame < 7):
-			_animation_player.play("chop_up")
-		if($Sprite2D.frame < 14):
-			_animation_player.play("chop_left")
-		if($Sprite2D.frame < 21):
-			_animation_player.play("chop_down")
-		else :
-			_animation_player.play("chop_right")
-		
-		
+	
+		elif Input.is_action_pressed("right"):
+			_animation_player.play("walk_right")
+	
+	
+		elif Input.is_action_pressed("up"):
+			_animation_player.play("walk_up")
+	
 
+		elif Input.is_action_pressed("down"):
+			_animation_player.play("walk_down")
+		else:
+			_animation_player.stop()
+	
+		if Input.is_action_just_pressed("swing_axe"):
+			if($Sprite2D.frame < 7):
+				handleSwing("chop_up")
+				
+			elif($Sprite2D.frame < 14):
+				handleSwing("chop_left")
+				
+			elif($Sprite2D.frame < 21):
+				handleSwing("chop_down")
+				
+			elif($Sprite2D.frame < 28) :
+				handleSwing("chop_right")
+			
+			elif($Sprite2D.frame < 35):
+				handleSwing("chop_up")
+				
+			elif($Sprite2D.frame < 42):
+				handleSwing("chop_left")
+				
+			elif($Sprite2D.frame < 49):
+				handleSwing("chop_down")
+				
+			elif($Sprite2D.frame < 56) :
+				handleSwing("chop_right")
+				
+		
+		
+func handleSwing(dir):
+	isChopping = true
+	_animation_player.play(dir)
+	await get_tree().create_timer(0.6).timeout
+	isChopping = false;
+	_animation_player.stop()
+	
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed

@@ -1,5 +1,6 @@
 res://main.tscn
 res://flame.gdshader
+res://player.gd
 res://main_menu.tscn
 res://campfire.tscn
 res://tree.tscn
