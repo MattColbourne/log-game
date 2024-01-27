@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://beyf5d6wjkas5"]
+
+[ext_resource type="Texture2D" uid="uid://dn0rt0nncbuv" path="res://assets/popups/mouse_left.png" id="1_3ft1q"]
+[ext_resource type="Texture2D" uid="uid://cj2vwyl73kvt" path="res://assets/popups/weaponicons.png" id="2_yonun"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MouseLeft" type="Sprite2D" parent="."]
+position = Vector2(32, 0)
+texture = ExtResource("1_3ft1q")
+
+[node name="axe" type="Sprite2D" parent="."]
+position = Vector2(-32, 0)
+texture = ExtResource("2_yonun")
