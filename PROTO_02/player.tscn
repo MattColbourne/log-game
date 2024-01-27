@@ -203,7 +203,7 @@ shape = SubResource("RectangleShape2D_5ixh4")
 texture = ExtResource("2_1u0pg")
 hframes = 7
 vframes = 9
-frame = 54
+frame = 42
 region_rect = Rect2(0, 896, 64, 64)
 script = SubResource("GDScript_2ytqk")
 
