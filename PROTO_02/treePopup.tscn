@@ -1,14 +1,93 @@
-[gd_scene load_steps=3 format=3 uid="uid://beyf5d6wjkas5"]
+[gd_scene load_steps=9 format=3 uid="uid://beyf5d6wjkas5"]
 
 [ext_resource type="Texture2D" uid="uid://dn0rt0nncbuv" path="res://assets/popups/mouse_left.png" id="1_3ft1q"]
+[ext_resource type="Script" path="res://treePopup.gd" id="1_euvck"]
 [ext_resource type="Texture2D" uid="uid://cj2vwyl73kvt" path="res://assets/popups/weaponicons.png" id="2_yonun"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7d41w"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m1laa"]
+light_mode = 1
+
+[sub_resource type="Animation" id="Animation_giwj4"]
+resource_name = "popup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 35), Vector2(0, -5), Vector2(0, 35)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.25, 0.25)]
+}
+
+[sub_resource type="Animation" id="Animation_cjyyb"]
+resource_name = "popdown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 35), Vector2(0, -5), Vector2(0, 35)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hmcda"]
+_data = {
+"popdown": SubResource("Animation_cjyyb"),
+"popup": SubResource("Animation_giwj4")
+}
+
+[node name="treePopup" type="Node2D"]
+position = Vector2(0, 35)
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("1_euvck")
 
 [node name="MouseLeft" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_7d41w")
 position = Vector2(32, 0)
 texture = ExtResource("1_3ft1q")
 
 [node name="axe" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_m1laa")
 position = Vector2(-32, 0)
 texture = ExtResource("2_yonun")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hmcda")
+}

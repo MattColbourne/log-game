@@ -5,3 +5,6 @@ res://campfire.tscn
 res://tree.tscn
 res://player.tscn
 res://treePopup.tscn
+res://tree.gd
+res://player.gd
+res://treePopup.gd
