@@ -34,17 +34,15 @@ func _process(delta):
 		if Input.is_action_pressed("left"):
 			_animation_player.play("walk_left")
 	
-	
 		elif Input.is_action_pressed("right"):
 			_animation_player.play("walk_right")
-	
 	
 		elif Input.is_action_pressed("up"):
 			_animation_player.play("walk_up")
 	
-
 		elif Input.is_action_pressed("down"):
 			_animation_player.play("walk_down")
+			
 		else:
 			_animation_player.stop()
 	
