@@ -10,12 +10,13 @@ var nearCampfire = false
 var pressed = ""
 var isChopping = false
 var canMove = true
+var death = false
 
 @onready var _animation_player = $AnimationPlayer
 
 func _process(delta):
 	if canMove:
-		if isChopping: pass
+		if isChopping or death: pass
 		else:
 			z_index = int(position.y/10)
 			Global.playerPos = global_position
@@ -77,7 +78,13 @@ func _process(delta):
 	elif Input.is_action_just_pressed("swing_axe"):
 		get_tree().reload_current_scene()
 		
-		
+func handleDeath():
+	death = true;
+	_animation_player.play("death")
+	await get_tree().create_timer(1.0).timeout
+	death = false;
+	_animation_player.stop()
+	return true
 		
 func handleSwing(dir):
 	isChopping = true

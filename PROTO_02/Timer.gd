@@ -11,5 +11,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	score += scorePerSec*delta
+	if not Global.dead: score += scorePerSec*delta
 	display.text = str(score)
