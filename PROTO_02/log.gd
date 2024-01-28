@@ -15,6 +15,7 @@ func _process(delta):
 		
 func drop(nearCampfire):
 	popDown2()
+	popUp()
 	if nearCampfire == false:
 		followPlayer = false
 		position.y += 10
