@@ -270,7 +270,7 @@ position = Vector2(551, 87)
 z_index = 28
 position = Vector2(530, 283)
 scale = Vector2(0.9, 0.9)
-progressBar = NodePath("../Control/ProgressBar")
+progressBar = NodePath("../CanvasLayer/Control/ProgressBar")
 burnRate = 1.0
 startFuel = 20.0
 
@@ -297,17 +297,13 @@ stream = ExtResource("8_wrvas")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-z_index = -6
-color = Color(0.576471, 0.537255, 0.517647, 1)
-
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 476.0
 offset_bottom = 40.0
 
-[node name="ProgressBar" type="ProgressBar" parent="Control"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_right = 616.0
 offset_bottom = 44.0
@@ -316,6 +312,10 @@ theme_override_styles/background = SubResource("StyleBoxFlat_3638l")
 theme_override_styles/fill = SubResource("StyleBoxFlat_82mm2")
 value = 29.26
 show_percentage = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+z_index = -6
+color = Color(0.576471, 0.537255, 0.517647, 1)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 process_material = SubResource("ParticleProcessMaterial_gxqff")
