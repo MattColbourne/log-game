@@ -23,7 +23,7 @@ func _process(delta):
 			if is_instance_valid(logsInArea[-1]):
 				currentlyHeldLog = logsInArea[-1]
 				logsInArea[-1].followPlayer = true
-				speed = 100
+				speed = 150
 		elif Input.is_action_just_pressed("pickup") and currentlyHeldLog != null:
 			currentlyHeldLog.drop(nearCampfire)
 			logsInArea.insert(0,currentlyHeldLog)

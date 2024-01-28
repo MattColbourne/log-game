@@ -28,6 +28,7 @@ func takeDamage():
 		newLog.position = global_position
 		get_parent().add_child(newLog)
 		#Global.treesDestroyedList.append(self)
+		
 		queue_free()
 		
 func popUpHealth():

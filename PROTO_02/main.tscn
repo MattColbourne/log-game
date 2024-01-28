@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dq1gfha6g8pns"]
+[gd_scene load_steps=19 format=3 uid="uid://dq1gfha6g8pns"]
 
 [ext_resource type="Texture2D" uid="uid://bslcw2fmle2xh" path="res://assets/TilesA2.png" id="1_3xjym"]
 [ext_resource type="PackedScene" uid="uid://cbboekyrsaiyk" path="res://tree.tscn" id="2_iybm4"]
@@ -228,6 +228,18 @@ border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.8, 0.8, 0.8, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8m041"]
+size = Vector2(138, 749)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcsxv"]
+size = Vector2(1181, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkshe"]
+size = Vector2(138, 774)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_352bm"]
+size = Vector2(1243.5, 84)
+
 [node name="root" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -264,7 +276,7 @@ position = Vector2(551, 87)
 z_index = 28
 position = Vector2(530, 283)
 scale = Vector2(0.9, 0.9)
-progressBar = NodePath("../Control/ProgressBar")
+progressBar = NodePath("../CanvasLayer/Control/ProgressBar")
 burnRate = 1.0
 startFuel = 20.0
 
@@ -291,22 +303,40 @@ stream = ExtResource("8_wrvas")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-z_index = -6
-color = Color(0.576471, 0.537255, 0.517647, 1)
-
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 476.0
 offset_bottom = 40.0
 
-[node name="ProgressBar" type="ProgressBar" parent="Control"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_right = 616.0
 offset_bottom = 44.0
 theme = ExtResource("9_dcawc")
 theme_override_styles/background = SubResource("StyleBoxFlat_3638l")
 theme_override_styles/fill = SubResource("StyleBoxFlat_82mm2")
-value = 29.26
+value = 10.0
 show_percentage = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+z_index = -6
+color = Color(0.576471, 0.537255, 0.517647, 1)
+
+[node name="boundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary"]
+position = Vector2(-73, 314.5)
+shape = SubResource("RectangleShape2D_8m041")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="boundary"]
+position = Vector2(577.5, -32.5)
+shape = SubResource("RectangleShape2D_gcsxv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="boundary"]
+position = Vector2(1217, 325)
+shape = SubResource("RectangleShape2D_pkshe")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="boundary"]
+position = Vector2(593.25, 684)
+shape = SubResource("RectangleShape2D_352bm")

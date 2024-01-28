@@ -58,6 +58,7 @@ radius = 29.1548
 z_index = 31
 script = ExtResource("1_tqtil")
 sprite = NodePath("AnimatedSprite2D")
+startFuel = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)

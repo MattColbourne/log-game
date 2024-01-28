@@ -8,3 +8,5 @@ res://treePopup.tscn
 res://campfire_new.tscn
 res://log.tscn
 res://campfire.gd
+res://player.gd
+res://tree.gd
