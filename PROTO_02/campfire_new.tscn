@@ -67,6 +67,7 @@ frame_progress = 0.963527
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 shadow_enabled = true
+shadow_item_cull_mask = 513
 texture = ExtResource("5_qq4cp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

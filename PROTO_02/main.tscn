@@ -228,9 +228,17 @@ border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.8, 0.8, 0.8, 0)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gxqff"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fnawd"]
 particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(-1, 270, 0)
+spread = 0.0
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 50, 0)
+scale_min = 5.0
+scale_max = 5.0
 
 [node name="root" type="Node2D"]
 
@@ -316,4 +324,10 @@ value = 29.26
 show_percentage = false
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-process_material = SubResource("ParticleProcessMaterial_gxqff")
+visibility_layer = 512
+z_index = 1000
+position = Vector2(545, -167)
+scale = Vector2(-890.101, 19.4803)
+amount = 2500
+process_material = SubResource("ParticleProcessMaterial_fnawd")
+lifetime = 10.0
