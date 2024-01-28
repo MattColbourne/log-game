@@ -1,10 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://byilguw02ovd3"]
+[gd_scene load_steps=9 format=3 uid="uid://byilguw02ovd3"]
 
 [ext_resource type="Script" path="res://log.gd" id="1_m2efu"]
-[ext_resource type="Texture2D" uid="uid://cevgxw3rb4v6c" path="res://assets/misc/log.png" id="3_etrgs"]
+[ext_resource type="Texture2D" uid="uid://cya8cniqrgoni" path="res://assets/misc/log.png" id="3_etrgs"]
+[ext_resource type="Texture2D" uid="uid://caum6nvljbfd7" path="res://assets/popups/keyboard_e.png" id="3_h5v0q"]
+[ext_resource type="Texture2D" uid="uid://dy7aqc0ba8jtf" path="res://assets/popups/hand_icon.png" id="4_1bai8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4yrr"]
 size = Vector2(46, 11.5)
+
+[sub_resource type="Animation" id="Animation_v6shj"]
+resource_name = "popdown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("popups:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2.5, 2.5), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_hk5km"]
+resource_name = "popup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("popups:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2.5, 2.5), Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3qjta"]
+_data = {
+"popdown": SubResource("Animation_v6shj"),
+"popup": SubResource("Animation_hk5km")
+}
 
 [node name="log" type="Node2D"]
 script = ExtResource("1_m2efu")
@@ -17,3 +57,27 @@ texture = ExtResource("3_etrgs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_d4yrr")
+
+[node name="animPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3qjta")
+}
+
+[node name="popups" type="Node2D" parent="."]
+scale = Vector2(2.67407, 2.67407)
+
+[node name="KeyboardE" type="Sprite2D" parent="popups"]
+self_modulate = Color(0.203922, 0.101961, 0, 1)
+position = Vector2(7, -17)
+scale = Vector2(0.203125, 0.203125)
+texture = ExtResource("3_h5v0q")
+
+[node name="HandIcon" type="Sprite2D" parent="popups"]
+modulate = Color(0.203922, 0.101961, 0, 1)
+position = Vector2(-6, -17)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_1bai8")
+vframes = 3
+frame = 1
+
+[connection signal="animation_finished" from="animPlayer" to="." method="_on_anim_player_animation_finished"]

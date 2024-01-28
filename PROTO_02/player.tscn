@@ -202,8 +202,8 @@ shape = SubResource("RectangleShape2D_5ixh4")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_1u0pg")
 hframes = 7
-vframes = 8
-frame = 54
+vframes = 9
+frame = 42
 region_rect = Rect2(0, 896, 64, 64)
 script = SubResource("GDScript_2ytqk")
 

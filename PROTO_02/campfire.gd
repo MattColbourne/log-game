@@ -23,12 +23,10 @@ func _ready():
 func _physics_process(delta):
 	#fuel -= burnRate * delta
 	fuel = scale.x*20
-	print(progressBar.max_value)
 	progressBar.value = fuel
+	
 	if fuel < 0:
-		## TODO: ADD LOSS CONDITION
-		
-		pass
+		die()
 		
 	
 func grow():
@@ -42,8 +40,6 @@ func grow():
 	print(growFactor)
 	
 
-
-
 func _on_timer_timeout():
 	scale -= Vector2(0.01,0.01)
 	#Global.camera.zoom += Vector2(0.01,0.01)
@@ -56,3 +52,6 @@ func _on_timer_timeout():
 			growFactor*=2
 			prevScales.remove_at(len(prevScales)-1)
 			print(prevScales)
+			
+func die():
+	pass
