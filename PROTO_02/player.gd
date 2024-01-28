@@ -114,6 +114,7 @@ func _on_area_2d_area_exited(area):
 				area.get_parent().removePopup()
 				area.get_parent().popDownHeath()
 				break
+	
 	elif area.is_in_group("campfire"):
 		nearCampfire = false
 		

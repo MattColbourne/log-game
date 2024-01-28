@@ -2,3 +2,5 @@ res://main.tscn
 res://log.tscn
 res://player.tscn
 res://campfire_new.tscn
+res://main_menu.tscn
+res://player.gd
