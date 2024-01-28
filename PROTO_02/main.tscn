@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://camera.gd" id="5_v3cst"]
 [ext_resource type="Script" path="res://windsfx.gd" id="6_60vno"]
 [ext_resource type="AudioStream" uid="uid://c2piqtv0o27ok" path="res://assets/sfx/fire-crackle.ogg" id="7_mearv"]
-[ext_resource type="AudioStream" path="res://assets/sfx/windstorm.ogg" id="8_8k514"]
+[ext_resource type="AudioStream" uid="uid://cvacxq2c28gri" path="res://assets/sfx/windstorm.ogg" id="8_8k514"]
 [ext_resource type="Theme" uid="uid://b8eroubhtn8va" path="res://bar.tres" id="9_dcawc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cukuf"]
@@ -274,11 +274,12 @@ position = Vector2(398, 261)
 [node name="tree6" parent="." instance=ExtResource("2_iybm4")]
 position = Vector2(551, 87)
 
-[node name="campfire" parent="." node_paths=PackedStringArray("progressBar") instance=ExtResource("4_fpqq2")]
+[node name="campfire" parent="." node_paths=PackedStringArray("progressBar", "player") instance=ExtResource("4_fpqq2")]
 z_index = 28
 position = Vector2(530, 283)
 scale = Vector2(0.9, 0.9)
 progressBar = NodePath("../CanvasLayer/Control/ProgressBar")
+player = NodePath("../player")
 burnRate = 1.0
 startFuel = 20.0
 

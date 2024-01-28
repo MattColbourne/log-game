@@ -119,3 +119,5 @@ func _on_area_2d_area_exited(area):
 	elif area.is_in_group("log"):
 		area.get_parent().popDown()
 
+func die():
+	pass

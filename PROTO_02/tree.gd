@@ -34,10 +34,9 @@ func takeDamage():
 		sprite.visible = false
 		$Area2D/CollisionShape2D.disabled = true
 		$StaticBody2D/CollisionShape2D.disabled = true
+		get_parent().decrement()
 
 func _on_fall_finished():
-	queue_free()
-	get_parent().decrement()
 	queue_free()
 		
 func popUpHealth():

@@ -2,6 +2,7 @@ extends Node2D
 
 @export var sprite: AnimatedSprite2D
 @export var progressBar: ProgressBar
+@export var player: Node2D
 
 @export_category("Values")
 @export var burnRate: float
@@ -24,7 +25,6 @@ func _physics_process(delta):
 	#fuel -= burnRate * delta
 	fuel = scale.x*20
 	progressBar.value = fuel
-	
 	if fuel < 0:
 		die()
 		
@@ -35,15 +35,11 @@ func grow():
 	prevScales.append(scale)
 	scale *= ((1+growFactor/4))
 	#lobal.camera.zoom /= ((1+growFactor/4))
-	
 	growFactor/=2
-	print(growFactor)
 	
 
 func _on_timer_timeout():
 	scale -= Vector2(0.01,0.01)
-	#Global.camera.zoom += Vector2(0.01,0.01)
-	
 	if scale.x<0.5:
 		#fire stops
 		pass

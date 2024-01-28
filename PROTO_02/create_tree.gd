@@ -20,6 +20,5 @@ func _process(delta):
 		num_trees += 1
 	
 	
-	
 func decrement():
 	num_trees -= 1
