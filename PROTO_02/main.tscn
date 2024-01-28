@@ -378,9 +378,14 @@ text = "The flame is out..."
 label_settings = SubResource("LabelSettings_n4a5g")
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="GridContainer"]
+[node name="CanvasLayer" type="CanvasLayer" parent="GridContainer"]
+
+[node name="Label2" type="Label" parent="GridContainer/CanvasLayer"]
 modulate = Color(0.341176, 0, 0, 1)
-layout_mode = 2
+offset_left = 53.0
+offset_top = 316.5
+offset_right = 983.0
+offset_bottom = 473.5
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("12_dff8f")
