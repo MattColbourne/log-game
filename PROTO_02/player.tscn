@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbfpckfg0kl35"]
+[gd_scene load_steps=16 format=3 uid="uid://dbfpckfg0kl35"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_6vr00"]
 [ext_resource type="Texture2D" uid="uid://cda8bs04r6ngl" path="res://assets/player/spritesheet.png" id="2_1u0pg"]
-[ext_resource type="AudioStream" uid="uid://dcjaqljfd7odn" path="res://assets/sfx/freezing.ogg" id="3_7ul1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ixh4"]
 size = Vector2(34, 52)
@@ -103,13 +102,13 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [49, 50, 51, 51, 52, 52, 52, 53, 53, 53, 54, 54, 54]
+"update": 1,
+"values": [56, 56, 57, 57, 58, 58, 59, 59, 59, 60, 60, 60, 60]
 }
 
 [sub_resource type="Animation" id="Animation_wmwen"]
@@ -204,7 +203,7 @@ shape = SubResource("RectangleShape2D_5ixh4")
 texture = ExtResource("2_1u0pg")
 hframes = 7
 vframes = 9
-frame = 42
+frame = 60
 region_rect = Rect2(0, 896, 64, 64)
 script = SubResource("GDScript_2ytqk")
 
@@ -223,7 +222,6 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_7ul1y")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
