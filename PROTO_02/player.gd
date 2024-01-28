@@ -74,7 +74,9 @@ func _process(delta):
 					
 				elif($Sprite2D.frame < 56) :
 					handleSwing("chop_right")
-					
+	elif Input.is_action_just_pressed("swing_axe"):
+		get_tree().reload_current_scene()
+		
 		
 		
 func handleSwing(dir):
