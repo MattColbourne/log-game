@@ -3,6 +3,7 @@ extends Node2D
 @export var sprite: AnimatedSprite2D
 @export var progressBar: ProgressBar
 @export var player: Node2D
+@export var text: GridContainer
 
 @export_category("Values")
 @export var burnRate: float
@@ -15,6 +16,7 @@ var alive = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	text.visible = false
 	sprite.play()
 	Global.campfire = self
 	fuel = startFuel
@@ -53,8 +55,10 @@ func _on_timer_timeout():
 			
 func die():
 	alive = false
+	text.visible = true
 	player.get_node("AudioStreamPlayer2D").play()
-	player.get_node("AnimationPlayer").play("death")
+	player.get_node("Sprite2D").visible = false
+	#player.get_node("AnimationPlayer").play("death")
 	player.canMove = false
 	player.velocity = Vector2.ZERO
 	print("You died...")
