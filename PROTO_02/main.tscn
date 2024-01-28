@@ -244,11 +244,11 @@ gravity = Vector3(0, 50, 0)
 scale_min = 5.0
 scale_max = 5.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_n4a5g"]
-font_size = 100
-
 [sub_resource type="LabelSettings" id="LabelSettings_jeta7"]
 font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4a5g"]
+font_size = 100
 
 [sub_resource type="LabelSettings" id="LabelSettings_2i8qu"]
 font_size = 40
@@ -292,7 +292,7 @@ position = Vector2(530, 283)
 scale = Vector2(0.9, 0.9)
 progressBar = NodePath("../CanvasLayer/Control/ProgressBar")
 player = NodePath("../player")
-text = NodePath("../GridContainer")
+text = NodePath("../GridContainer/CanvasLayer")
 burnRate = 1.0
 startFuel = 20.0
 
@@ -367,17 +367,6 @@ offset_bottom = 459.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="GridContainer"]
-modulate = Color(0.341176, 0, 0, 1)
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("12_dff8f")
-theme_override_font_sizes/font_size = 144
-text = "The flame is out..."
-label_settings = SubResource("LabelSettings_n4a5g")
-horizontal_alignment = 1
-
 [node name="CanvasLayer" type="CanvasLayer" parent="GridContainer"]
 
 [node name="Label2" type="Label" parent="GridContainer/CanvasLayer"]
@@ -393,6 +382,20 @@ theme_override_font_sizes/font_size = 144
 text = "Click or space
 to restart"
 label_settings = SubResource("LabelSettings_jeta7")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="GridContainer/CanvasLayer"]
+modulate = Color(0.341176, 0, 0, 1)
+offset_left = 53.0
+offset_top = 174.0
+offset_right = 983.0
+offset_bottom = 327.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_dff8f")
+theme_override_font_sizes/font_size = 144
+text = "The flame is out..."
+label_settings = SubResource("LabelSettings_n4a5g")
 horizontal_alignment = 1
 
 [node name="Timer" type="Node2D" parent="." node_paths=PackedStringArray("display")]
