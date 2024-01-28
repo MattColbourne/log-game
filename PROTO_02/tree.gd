@@ -37,6 +37,8 @@ func takeDamage():
 
 func _on_fall_finished():
 	queue_free()
+	get_parent().decrement()
+	queue_free()
 		
 func popUpHealth():
 	$health/AnimationPlayer.play("healthPopup")

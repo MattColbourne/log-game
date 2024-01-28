@@ -1,11 +1,8 @@
 res://main.tscn
-res://flame.gdshader
-res://main_menu.tscn
-res://campfire.tscn
-res://tree.tscn
+res://log.tscn
 res://player.tscn
-res://treePopup.tscn
 res://campfire_new.tscn
 res://tree.gd
 res://windsfx.gd
 res://GPUParticles2D.gd
+

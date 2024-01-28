@@ -22,8 +22,10 @@ func _process(delta):
 		if Input.is_action_just_pressed("pickup") and currentlyHeldLog == null and logsInArea.size()>0:
 			if is_instance_valid(logsInArea[-1]):
 				currentlyHeldLog = logsInArea[-1]
+				
+				currentlyHeldLog.popDown()
 				logsInArea[-1].followPlayer = true
-				speed = 100
+				speed = 150
 		elif Input.is_action_just_pressed("pickup") and currentlyHeldLog != null:
 			currentlyHeldLog.drop(nearCampfire)
 			logsInArea.insert(0,currentlyHeldLog)
@@ -97,6 +99,7 @@ func _on_area_2d_area_entered(area):
 		area.get_parent().popUpHealth()
 	elif area.is_in_group("log"):
 		logsInArea.append(area.get_parent())
+		area.get_parent().popUp()
 	elif area.is_in_group("campfire"):
 		nearCampfire = true
 		
@@ -109,5 +112,10 @@ func _on_area_2d_area_exited(area):
 				area.get_parent().removePopup()
 				area.get_parent().popDownHeath()
 				break
+	
 	elif area.is_in_group("campfire"):
 		nearCampfire = false
+		
+	elif area.is_in_group("log"):
+		area.get_parent().popDown()
+

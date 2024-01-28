@@ -16,13 +16,15 @@ func _ready():
 	sprite.play()
 	Global.campfire = self
 	fuel = startFuel
-	progressBar.value = fuel
+	#progressBar.value = fuel
 	progressBar.max_value = startFuel
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	fuel -= burnRate * delta
+	#fuel -= burnRate * delta
+	fuel = scale.x*20
 	progressBar.value = fuel
+	
 	if fuel < 0:
 		die()
 		
