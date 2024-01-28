@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dq1gfha6g8pns"]
+[gd_scene load_steps=23 format=3 uid="uid://dq1gfha6g8pns"]
 
 [ext_resource type="Texture2D" uid="uid://bslcw2fmle2xh" path="res://assets/TilesA2.png" id="1_3xjym"]
 [ext_resource type="Script" path="res://create_tree.gd" id="1_5even"]
@@ -12,6 +12,7 @@
 [ext_resource type="Theme" uid="uid://b8eroubhtn8va" path="res://bar.tres" id="9_dcawc"]
 [ext_resource type="Texture2D" uid="uid://vdxxn5y2jwi" path="res://assets/fire/fire0.png" id="11_cxyj6"]
 [ext_resource type="FontFile" uid="uid://hwo5nrksda5c" path="res://assets/fonts/FontdinerSwanky-Regular.ttf" id="12_dff8f"]
+[ext_resource type="Script" path="res://Timer.gd" id="13_acptn"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cukuf"]
 
@@ -249,6 +250,9 @@ font_size = 100
 [sub_resource type="LabelSettings" id="LabelSettings_jeta7"]
 font_size = 50
 
+[sub_resource type="LabelSettings" id="LabelSettings_2i8qu"]
+font_size = 40
+
 [node name="root" type="Node2D"]
 script = ExtResource("1_5even")
 
@@ -385,3 +389,22 @@ text = "Click or space
 to restart"
 label_settings = SubResource("LabelSettings_jeta7")
 horizontal_alignment = 1
+
+[node name="Timer" type="Node2D" parent="." node_paths=PackedStringArray("display")]
+script = ExtResource("13_acptn")
+scorePerSec = 100
+display = NodePath("../Label3")
+
+[node name="Label3" type="Label" parent="."]
+modulate = Color(0.341176, 0, 0, 1)
+offset_left = 210.0
+offset_top = -2.0
+offset_right = 1140.0
+offset_bottom = 59.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_dff8f")
+theme_override_font_sizes/font_size = 144
+text = "000000"
+label_settings = SubResource("LabelSettings_2i8qu")
+horizontal_alignment = 2
