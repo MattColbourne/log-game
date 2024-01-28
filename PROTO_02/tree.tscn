@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://tree.gd" id="1_v0aek"]
 [ext_resource type="Texture2D" uid="uid://be6du7hx80p4p" path="res://assets/tree/trees0.png" id="2_1l6eu"]
 [ext_resource type="PackedScene" uid="uid://beyf5d6wjkas5" path="res://treePopup.tscn" id="3_c1kpa"]
+[ext_resource type="AudioStream" uid="uid://dfqkjpawct160" path="res://assets/sfx/chop-1.ogg" id="4_wnp3w"]
+[ext_resource type="AudioStream" uid="uid://g5uncodgiet1" path="res://assets/sfx/tree-fall.ogg" id="5_cf688"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2beg"]
 size = Vector2(32, 12)
@@ -66,40 +68,11 @@ _data = {
 "healthPopup": SubResource("Animation_f5cgm")
 }
 
-[sub_resource type="Animation" id="Animation_n3j8r"]
-resource_name = "grow"
-length = 2.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.75, -0.25, 0, 0.25, 0, 1.25, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.1, 0.7, 1.2, 1.7)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.75, -0.25, 0, 0.25, 0, 1.25, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.1, 0.7, 1.2, 1.7)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yk1r7"]
-_data = {
-"grow": SubResource("Animation_n3j8r")
-}
-
-[node name="tree" type="Node2D" node_paths=PackedStringArray("sprite")]
+[node name="tree" type="Node2D" node_paths=PackedStringArray("sprite", "chop", "fall")]
 script = ExtResource("1_v0aek")
 sprite = NodePath("Sprite")
+chop = NodePath("chop")
+fall = NodePath("fall")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-1, 13)
@@ -147,13 +120,13 @@ libraries = {
 [node name="treePopup" parent="." instance=ExtResource("3_c1kpa")]
 
 [node name="chop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_wnp3w")
+volume_db = 15.848
 
 [node name="fall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_cf688")
+volume_db = 10.895
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_yk1r7")
-}
-blend_times = [&"grow", &"grow", 0.05]
+[connection signal="finished" from="fall" to="." method="_on_fall_finished"]
 
 [editable path="treePopup"]
