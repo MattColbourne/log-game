@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://camera.gd" id="5_v3cst"]
 [ext_resource type="Script" path="res://windsfx.gd" id="6_60vno"]
 [ext_resource type="AudioStream" uid="uid://c2piqtv0o27ok" path="res://assets/sfx/fire-crackle.ogg" id="7_mearv"]
-[ext_resource type="AudioStream" uid="uid://csxjp4fvkcxdg" path="res://assets/sfx/windstorm.wav" id="8_wrvas"]
+[ext_resource type="AudioStream" uid="uid://cvacxq2c28gri" path="res://assets/sfx/windstorm.ogg" id="8_8k514"]
 [ext_resource type="Theme" uid="uid://b8eroubhtn8va" path="res://bar.tres" id="9_dcawc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cukuf"]
@@ -299,7 +299,8 @@ fireMinVol = 8
 stream = ExtResource("7_mearv")
 
 [node name="wind" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("8_wrvas")
+stream = ExtResource("8_8k514")
+autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

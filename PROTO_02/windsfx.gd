@@ -22,7 +22,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	if windSFX.playing == false:
+		windSFX.play()
+	if campfireSFX.playing == false:
+		campfireSFX.play()
 	dist = player.position.distance_to(fire.position)
 	if dist > windDist:
 		enable_wind()
