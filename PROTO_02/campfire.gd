@@ -64,11 +64,13 @@ func _on_timer_timeout():
 func die():
 	player.canMove = false
 	player.velocity = Vector2.ZERO
+	sprite.hide()
 	alive = false
 	text.show()
 	Global.dead = true
-	var d = await player.handleDeath()
 	player.get_node("AudioStreamPlayer2D").play()
+	var d = await player.handleDeath()
+	
 	#player.get_node("AnimationPlayer").play("death")
 
 	
