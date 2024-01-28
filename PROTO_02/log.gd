@@ -5,6 +5,7 @@ var playAnim = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$popups.scale = Vector2.ZERO
+	$popups2.scale = Vector2.ZERO
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -13,6 +14,7 @@ func _process(delta):
 		position = Global.playerPos
 		
 func drop(nearCampfire):
+	popDown2()
 	if nearCampfire == false:
 		followPlayer = false
 		position.y += 10
@@ -20,6 +22,7 @@ func drop(nearCampfire):
 		#put in fire
 		Global.campfire.grow()
 		queue_free()
+	
 		
 func popUp():
 	if $animPlayer.is_playing()==false:
@@ -33,7 +36,11 @@ func popDown():
 	else:
 		playAnim = "popdown"
 	
+func popUp2():
+	$animPlayer.play("popup2")
 	
+func popDown2():
+	$animPlayer.play("popdown2")
 
 
 func _on_anim_player_animation_finished(anim_name):
