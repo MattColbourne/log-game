@@ -67,13 +67,13 @@ libraries = {
 scale = Vector2(2.67407, 2.67407)
 
 [node name="KeyboardE" type="Sprite2D" parent="popups"]
-self_modulate = Color(0.203922, 0.101961, 0, 1)
+self_modulate = Color(0.0901961, 0.145098, 0.105882, 1)
 position = Vector2(7, -17)
 scale = Vector2(0.203125, 0.203125)
 texture = ExtResource("3_h5v0q")
 
 [node name="HandIcon" type="Sprite2D" parent="popups"]
-modulate = Color(0.203922, 0.101961, 0, 1)
+modulate = Color(0.0901961, 0.145098, 0.105882, 1)
 position = Vector2(-6, -17)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_1bai8")
