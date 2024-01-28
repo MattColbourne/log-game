@@ -31,13 +31,13 @@ func takeDamage():
 		var newLog = log.instantiate()
 		newLog.position = global_position
 		get_parent().add_child(newLog)
+		get_parent().decrement()
 		sprite.visible = false
 		$Area2D/CollisionShape2D.disabled = true
 		$StaticBody2D/CollisionShape2D.disabled = true
 
 func _on_fall_finished():
 	queue_free()
-	get_parent().decrement()
 	queue_free()
 		
 func popUpHealth():

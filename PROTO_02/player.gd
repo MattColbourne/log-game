@@ -102,6 +102,8 @@ func _on_area_2d_area_entered(area):
 		area.get_parent().popUp()
 	elif area.is_in_group("campfire"):
 		nearCampfire = true
+		if currentlyHeldLog != null:
+			currentlyHeldLog.popUp2()
 		
 
 func _on_area_2d_area_exited(area):
@@ -115,6 +117,8 @@ func _on_area_2d_area_exited(area):
 	
 	elif area.is_in_group("campfire"):
 		nearCampfire = false
+		if currentlyHeldLog != null:
+			currentlyHeldLog.popDown2()
 		
 	elif area.is_in_group("log"):
 		area.get_parent().popDown()
