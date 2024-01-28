@@ -293,8 +293,8 @@ scale = Vector2(0.9, 0.9)
 progressBar = NodePath("../CanvasLayer/Control/ProgressBar")
 player = NodePath("../player")
 text = NodePath("../GridContainer/CanvasLayer")
-burnRate = 1.0
-startFuel = 20.0
+burnRate = 2.0
+startFuel = 100.0
 
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(572, 318)

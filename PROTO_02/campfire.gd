@@ -21,7 +21,7 @@ func _ready():
 	Global.campfire = self
 	fuel = startFuel
 	#progressBar.value = fuel
-	progressBar.max_value = startFuel
+	progressBar.max_value = scale.x*20
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -39,7 +39,9 @@ func grow():
 	prevScales.append(scale)
 	scale *= ((1+growFactor/4))
 	#lobal.camera.zoom /= ((1+growFactor/4))
-	growFactor/=2
+	growFactor/2
+	if scale.x*20 > progressBar.max_value:
+		scale = Vector2(progressBar.max_value/20, progressBar.max_value/20)
 	
 
 func _on_timer_timeout():
@@ -54,14 +56,13 @@ func _on_timer_timeout():
 			prevScales.remove_at(len(prevScales)-1)
 			
 func die():
+	player.canMove = false
+	player.velocity = Vector2.ZERO
 	alive = false
 	text.show()
 	Global.dead = true
 	var d = await player.handleDeath()
 	player.get_node("AudioStreamPlayer2D").play()
 	#player.get_node("AnimationPlayer").play("death")
-	player.canMove = false
-	player.velocity = Vector2.ZERO
-	
-	print("You died...")
+
 	
