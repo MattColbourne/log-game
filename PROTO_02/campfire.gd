@@ -27,9 +27,11 @@ func _ready():
 func _physics_process(delta):
 	if alive:
 		#fuel -= burnRate * delta
-		fuel = scale.x*20
-		progressBar.value = fuel
-		if fuel < 0:
+		#fuel = scale.x*20
+		
+		print(progressBar.max_value)
+		#progressBar.value = fuel
+		if progressBar.value <= 0:
 			die()
 		
 	
@@ -37,16 +39,20 @@ func grow():
 	#scale*=1.2
 	#Global.camera.zoom/=1.2
 	prevScales.append(scale)
-	scale *= ((1+growFactor/4))
+	#scale *= ((1+growFactor/4))
+	progressBar.value += 5
 	#lobal.camera.zoom /= ((1+growFactor/4))
-	growFactor/2
+	#growFactor/2
 	if scale.x*20 > progressBar.max_value:
 		scale = Vector2(progressBar.max_value/20, progressBar.max_value/20)
 	
 
 func _on_timer_timeout():
-	if scale.x > 0:
-		scale -= Vector2(0.018,0.018)
+	#if scale.x > 0:
+		#scale -= Vector2(0.018,0.018)
+	progressBar.value -= 0.5
+	
+	
 	if scale.x<0.5:
 		#fire stops
 		pass
