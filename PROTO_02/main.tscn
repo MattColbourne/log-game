@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dq1gfha6g8pns"]
+[gd_scene load_steps=21 format=3 uid="uid://dq1gfha6g8pns"]
 
 [ext_resource type="Texture2D" uid="uid://bslcw2fmle2xh" path="res://assets/TilesA2.png" id="1_3xjym"]
 [ext_resource type="Script" path="res://create_tree.gd" id="1_5even"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cvacxq2c28gri" path="res://assets/sfx/windstorm.ogg" id="8_8k514"]
 [ext_resource type="Theme" uid="uid://b8eroubhtn8va" path="res://bar.tres" id="9_dcawc"]
 [ext_resource type="Texture2D" uid="uid://vdxxn5y2jwi" path="res://assets/fire/fire0.png" id="11_cxyj6"]
+[ext_resource type="FontFile" uid="uid://hwo5nrksda5c" path="res://assets/fonts/FontdinerSwanky-Regular.ttf" id="12_dff8f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cukuf"]
 
@@ -242,6 +243,12 @@ gravity = Vector3(0, 50, 0)
 scale_min = 5.0
 scale_max = 5.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_n4a5g"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_jeta7"]
+font_size = 50
+
 [node name="root" type="Node2D"]
 script = ExtResource("1_5even")
 
@@ -270,7 +277,7 @@ position = Vector2(591, 511)
 position = Vector2(819, 125)
 
 [node name="player" parent="." instance=ExtResource("4_rvyqj")]
-position = Vector2(398, 261)
+position = Vector2(462, 272)
 
 [node name="tree6" parent="." instance=ExtResource("2_iybm4")]
 position = Vector2(551, 87)
@@ -341,3 +348,39 @@ scale = Vector2(-890.101, 19.4803)
 amount = 2500
 process_material = SubResource("ParticleProcessMaterial_fnawd")
 lifetime = 10.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = 174.0
+offset_right = 1034.0
+offset_bottom = 459.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GridContainer"]
+modulate = Color(0.341176, 0, 0, 1)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_dff8f")
+theme_override_font_sizes/font_size = 144
+text = "The flame is out..."
+label_settings = SubResource("LabelSettings_n4a5g")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="GridContainer"]
+modulate = Color(0.341176, 0, 0, 1)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("12_dff8f")
+theme_override_font_sizes/font_size = 144
+text = "Click or space
+to restart"
+label_settings = SubResource("LabelSettings_jeta7")
+horizontal_alignment = 1
