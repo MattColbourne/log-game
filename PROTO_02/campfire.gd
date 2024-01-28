@@ -43,7 +43,8 @@ func grow():
 	
 
 func _on_timer_timeout():
-	scale -= Vector2(0.018,0.018)
+	if scale.x > 0:
+		scale -= Vector2(0.018,0.018)
 	if scale.x<0.5:
 		#fire stops
 		pass
