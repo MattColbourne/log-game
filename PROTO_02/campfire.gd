@@ -11,6 +11,7 @@ extends Node2D
 var fuel: float
 var growFactor: float = 1.0
 var prevScales = []
+var alive = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,11 +23,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	#fuel -= burnRate * delta
-	fuel = scale.x*20
-	progressBar.value = fuel
-	if fuel < 0:
-		die()
+	if alive:
+		#fuel -= burnRate * delta
+		fuel = scale.x*20
+		progressBar.value = fuel
+		if fuel < 0:
+			die()
 		
 	
 func grow():
@@ -50,4 +52,10 @@ func _on_timer_timeout():
 			print(prevScales)
 			
 func die():
-	pass
+	alive = false
+	player.get_node("AudioStreamPlayer2D").play()
+	player.get_node("AnimationPlayer").play("death")
+	player.canMove = false
+	player.velocity = Vector2.ZERO
+	print("You died...")
+	
