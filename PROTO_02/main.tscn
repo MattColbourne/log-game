@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dq1gfha6g8pns"]
+[gd_scene load_steps=18 format=3 uid="uid://dq1gfha6g8pns"]
 
 [ext_resource type="Texture2D" uid="uid://bslcw2fmle2xh" path="res://assets/TilesA2.png" id="1_3xjym"]
 [ext_resource type="Script" path="res://create_tree.gd" id="1_5even"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://c2piqtv0o27ok" path="res://assets/sfx/fire-crackle.ogg" id="7_mearv"]
 [ext_resource type="AudioStream" uid="uid://cvacxq2c28gri" path="res://assets/sfx/windstorm.ogg" id="8_8k514"]
 [ext_resource type="Theme" uid="uid://b8eroubhtn8va" path="res://bar.tres" id="9_dcawc"]
+[ext_resource type="Texture2D" uid="uid://vdxxn5y2jwi" path="res://assets/fire/fire0.png" id="11_cxyj6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cukuf"]
 
@@ -306,7 +307,7 @@ stream = ExtResource("8_8k514")
 autoplay = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.439216, 0.439216, 0.439216, 1)
+color = Color(0.537255, 0.537255, 0.537255, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -319,12 +320,18 @@ offset_bottom = 40.0
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_right = 616.0
-offset_bottom = 44.0
+offset_bottom = 55.0
 theme = ExtResource("9_dcawc")
 theme_override_styles/background = SubResource("StyleBoxFlat_3638l")
 theme_override_styles/fill = SubResource("StyleBoxFlat_82mm2")
 value = 29.26
 show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control"]
+position = Vector2(31, 26)
+texture = ExtResource("11_cxyj6")
+region_enabled = true
+region_rect = Rect2(265, 23, 50, 41)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 visibility_layer = 512
